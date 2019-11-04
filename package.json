@@ -1,5 +1,5 @@
 {
-  "name": "@artsy/fresnel",
+  "name": "@gmpovio/fresnel",
   "version": "1.0.7",
   "description": "An SSR compatible approach to CSS media query based responsive layouts for React.",
   "main": "dist/index.js",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/artsy/fresnel.git"
+    "url": "git+ssh://git@github.com/gmpovio/fresnel.git"
   },
   "authors": [
     "Eloy Durán <eloy.de.enige@gmail.com>",
@@ -37,9 +37,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/artsy/fresnel/issues"
+    "url": "https://github.com/gmpovio/fresnel/issues"
   },
-  "homepage": "https://github.com/artsy/fresnel#readme",
+  "homepage": "https://github.com/gmpovio/fresnel#readme",
   "peerDependencies": {
     "react": "^16.3.0"
   },

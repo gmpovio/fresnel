@@ -11,10 +11,10 @@ import { intersection, propKey, createClassName } from "./Utils"
  *
  * @see {@link MediaProps.children}.
  */
-export type RenderProp = ((
+export type RenderProp = (
   className: string,
   renderChildren: boolean
-) => React.ReactNode)
+) => React.ReactNode
 
 // TODO: All of these props should be mutually exclusive. Using a union should
 //       probably be made possible by https://github.com/Microsoft/TypeScript/pull/27408.
@@ -127,6 +127,7 @@ export interface MediaBreakpointProps<B = string> {
    *
    */
   between?: [B, B]
+  customClassName?: string
 }
 
 export interface MediaProps<B, I> extends MediaBreakpointProps<B> {
@@ -176,6 +177,7 @@ export interface MediaProps<B, I> extends MediaBreakpointProps<B> {
    *
    */
   children: React.ReactNode | RenderProp
+  customClassName?: string
 }
 
 export interface MediaContextProviderProps<M> {
@@ -371,7 +373,10 @@ export function createMedia<
             let className: string | null
             const { children, interaction, ...breakpointProps } = props
             if (props.interaction) {
-              className = createClassName("interaction", props.interaction)
+              className =
+                createClassName("interaction", props.interaction) +
+                " " +
+                props.customClassName
             } else {
               if (props.at) {
                 const largestBreakpoint =
@@ -404,7 +409,8 @@ export function createMedia<
 
               const type = propKey(breakpointProps)
               const breakpoint = breakpointProps[type]!
-              className = createClassName(type, breakpoint)
+              className =
+                createClassName(type, breakpoint) + " " + props.customClassName
             }
 
             const renderChildren =
